@@ -16,7 +16,47 @@
 				<li><%= link_to 'Blog', blog_posts_path %></li>
 			</ul>
 
-			
+			<div class="row">
+				<div class="col-md-3">
+					<ul class="list-unstyled">
+						<li><h4><strong> <i class='glyphicon glyphicon-search'></i> CATEGORIA</strong></h4></li>
+						<li><p>Por categoria</p></li>
+						<li><hr></li>
+					</ul>
+				
+				<ul class='list-unstyledl list-group'>
+					<% Category.all.order(name: :desc).each do |category| %>
+						<% for i in 1..5 %>
+							<li class='list-group-item'><%= link_to category.name %></li>
+						<% end %>
+					<% end %>
+				</ul>
+				</div>
+				<div class="col-md-9">
+					<ul class="list-unstyled">
+						<li><h4><strong> <i class='glyphicon glyphicon-search'></i> POSTAGENS</strong></h4></li>
+						<li><p>Acompanhe nossas postagens.</p></li>
+						<hr>
+					</ul>
+
+						<div class='row'>
+						<% Post.friendly.all.each do |post| %>
+							<% for i in 1..12 %>
+							<div class="col-md-4">
+								<div class="panel panel-default">
+									<div class='jumbotron'></div>
+									<ul class="list-unstyled padding" style='margin-top: -30px;'>
+										<li><h4><%= link_to post.title, blog_post_path(post) %></h4></li>
+										<li><%= post.description %></li>
+									</ul>
+								</div>
+							</div>
+							<% end %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </section>

@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rails_admin'
   gem 'bootstrap-sass'
   gem 'jquery-rails'
+  gem 'activemerchant'
   gem 'friendly_id'
 end
 
