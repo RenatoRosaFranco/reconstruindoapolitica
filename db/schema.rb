@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_24_191456) do
+ActiveRecord::Schema.define(version: 2018_07_25_123020) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 2018_07_24_191456) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "benefits", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "slug"
+    t.string "tags"
+    t.integer "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_benefits_on_plan_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.string "description"
@@ -51,6 +62,17 @@ ActiveRecord::Schema.define(version: 2018_07_24_191456) do
     t.integer "post_id"
     t.index ["category_id"], name: "index_categories_posts_on_category_id"
     t.index ["post_id"], name: "index_categories_posts_on_post_id"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "slug"
+    t.string "tags"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_plans_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
